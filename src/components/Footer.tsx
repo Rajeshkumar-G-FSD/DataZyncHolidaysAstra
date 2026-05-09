@@ -8,8 +8,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand Column */}
           <div className="space-y-6">
-            <Link to="/" className="font-display text-3xl text-primary tracking-tighter uppercase font-bold">
-              Tourium
+            <Link to="/">
+              <img src="https://i.postimg.cc/Jnrg4Jqr/gootoholidays-yellow.png" alt="GooToHolidays Logo" className="h-12 w-auto object-contain" />
             </Link>
             <p className="text-on-surface-variant font-sans leading-relaxed max-w-xs">
               Elevating global travel to an art form for the discerning few. Redefining luxury for the modern connoisseur.
@@ -53,7 +53,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-white/5 text-center">
           <p className="text-on-surface-variant text-xs tracking-widest uppercase">
-            © {new Date().getFullYear()} TOURIUM. PRIVATE & CONFIDENTIAL.
+            © {new Date().getFullYear()} GOOTOHOLIDAYS. PRIVATE & CONFIDENTIAL.
           </p>
         </div>
       </div>

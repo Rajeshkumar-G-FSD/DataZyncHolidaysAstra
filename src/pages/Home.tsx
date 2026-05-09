@@ -1,6 +1,7 @@
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform, useSpring } from 'motion/react';
 import { ArrowLeft, ArrowRight, PlaneTakeoff, Diamond, HomeIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useRef } from 'react';
 
 const destinations = [
   {
@@ -40,11 +41,30 @@ const services = [
 ];
 
 export default function Home() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  // Section flow transformations
+  const heroOpacity = useTransform(smoothProgress, [0, 0.2], [1, 0]);
+  const heroScale = useTransform(smoothProgress, [0, 0.2], [1, 0.8]);
+
   return (
-    <div className="w-full">
+    <div ref={containerRef} className="w-full relative">
       {/* Hero Section */}
       <header className="relative w-full h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+        <motion.div 
+          style={{ opacity: heroOpacity, scale: heroScale }}
+          className="absolute inset-0 z-0"
+        >
           <img 
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqvEe30uMt82qg-x4GRBqCqVSWrcpWeGE78HcuMMUdx7B5ON17aIuwmy-VNO0ckcHp7Iithq9u9PDf0pci9uO4b4mrimsTKTrfVwrI2zBFRSvZW069oq6WeJJUkUmltdL-ehTk5ueZJVZNA7k9S9EjBKz52ST8bYAspcTamaGoATScFKuAVgCShh_yqWWFdafHGW902Q-v7TG4j0_gdMfydvhHAcoXiZ7haKrdtiM3IjzMvOAU9f3jjkFJRuG2OmHu3d4m4DxbGnNZ" 
             alt="Maldives Resort"
@@ -52,7 +72,7 @@ export default function Home() {
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-linear-to-t from-surface-dim via-surface-dim/40 to-transparent" />
-        </div>
+        </motion.div>
         
         <div className="relative z-10 text-center px-6 md:px-20 max-w-7xl mx-auto">
           <motion.h1 
@@ -87,9 +107,16 @@ export default function Home() {
         </div>
       </header>
 
+
       {/* Destinations Section */}
       <section className="py-24 px-6 md:px-20 max-w-7xl mx-auto overflow-hidden">
-        <div className="flex justify-between items-end mb-12">
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+          className="flex justify-between items-end mb-12"
+        >
           <div>
             <h2 className="font-display text-4xl md:text-5xl text-on-surface mb-2">Iconic Destinations</h2>
             <p className="font-sans text-on-surface-variant">Curated locations for the extraordinary traveler.</p>
@@ -102,16 +129,16 @@ export default function Home() {
               <ArrowRight size={20} />
             </button>
           </div>
-        </div>
+        </motion.div>
 
         <div className="flex gap-8 overflow-x-auto pb-6 scrollbar-hide snap-x group/carousel">
           {destinations.map((dest, i) => (
             <motion.div 
               key={dest.name}
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              initial={{ opacity: 0, scale: 0.9, x: 50 }}
+              whileInView={{ opacity: 1, scale: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: i * 0.2, duration: 0.6, ease: "easeOut" }}
               className="min-w-[300px] md:min-w-[400px] h-[500px] rounded-2xl overflow-hidden relative group snap-center cursor-pointer"
             >
               <img 
@@ -136,19 +163,30 @@ export default function Home() {
 
       {/* Services Section */}
       <section className="py-24 px-6 md:px-20 max-w-7xl mx-auto">
-        <h2 className="font-display text-5xl text-center text-on-surface mb-16">Bespoke Services</h2>
+        <motion.h2 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="font-display text-5xl text-center text-on-surface mb-16"
+        >
+          Bespoke Services
+        </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, i) => (
             <motion.div 
               key={service.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              transition={{ delay: i * 0.15, duration: 0.6 }}
               className={`glass-panel p-10 rounded-2xl hover:scale-[1.02] transition-all duration-500 flex flex-col items-center text-center relative overflow-hidden ${service.featured ? 'border-primary/30' : ''}`}
             >
               {service.featured && (
-                <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent z-0" />
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent z-0" 
+                />
               )}
               <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 relative z-10 ${service.featured ? 'bg-primary/20 shadow-xl shadow-primary/10' : 'bg-surface-container-high'}`}>
                 {service.icon}
@@ -160,19 +198,27 @@ export default function Home() {
         </div>
       </section>
 
+
       {/* Testimonials Section */}
       <section className="py-24 px-6 md:px-20 bg-surface-container-lowest/50 border-y border-white/5 relative overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
-          <div className="lg:w-1/3">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="lg:w-1/3"
+          >
             <span className="text-primary text-[10px] font-bold tracking-[0.3em] uppercase mb-4 block">CLIENT VOICES</span>
             <h2 className="font-display text-4xl md:text-5xl text-on-surface mb-6">The Dossier of <br /> Excellence</h2>
             <p className="text-on-surface-variant font-sans leading-relaxed">Hear from those who have traversed the globe with Tourium.</p>
-          </div>
+          </motion.div>
           <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8">
             <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
               className="glass-panel p-8 rounded-2xl space-y-6"
             >
               <div className="flex gap-1 text-primary">
@@ -188,10 +234,10 @@ export default function Home() {
               </div>
             </motion.div>
             <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
               className="glass-panel p-8 rounded-2xl space-y-6"
             >
               <div className="flex gap-1 text-primary">
@@ -208,16 +254,20 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[100px] -z-10" />
+        {/* Decorative elements with parallax */}
+        <motion.div 
+          style={{ y: useTransform(smoothProgress, [0.6, 1], [0, -100]) }}
+          className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[100px] -z-10" 
+        />
       </section>
 
       {/* Newsletter / Dossier Signup */}
-      <section className="py-32 px-6 md:px-20 text-center relative">
+      <section className="py-32 px-6 md:px-20 text-center relative overflow-hidden">
         <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
+          transition={{ duration: 1, type: "spring", bounce: 0.3 }}
           className="max-w-4xl mx-auto glass-panel p-16 rounded-[2.5rem] border-white/5 space-y-10 relative overflow-hidden"
         >
           <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent pointer-events-none" />
@@ -233,6 +283,7 @@ export default function Home() {
           </div>
         </motion.div>
       </section>
+
     </div>
   );
 }
