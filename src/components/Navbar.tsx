@@ -32,7 +32,12 @@ export default function Navbar() {
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 border-b ${scrolled || isOpen ? 'bg-black/90 backdrop-blur-xl border-white/5 h-20' : 'bg-transparent border-transparent h-24'}`}>
       <div className="flex justify-between items-center h-full px-6 md:px-20 max-w-7xl mx-auto w-full">
         <Link to="/" className="relative z-50">
-          <img src="https://i.postimg.cc/Jnrg4Jqr/gootoholidays-yellow.png" alt="GooToHolidays Logo" className="h-10 md:h-14 w-auto object-contain" />
+          <img 
+            src="https://i.postimg.cc/Jnrg4Jqr/gootoholidays-yellow.png" 
+            alt="GooToHolidays Logo" 
+            className="h-10 md:h-14 w-auto object-contain" 
+            style={{ filter: 'invert(1) hue-rotate(180deg) brightness(1.2)' }}
+          />
         </Link>
         
         <div className="hidden md:flex gap-8 items-center">

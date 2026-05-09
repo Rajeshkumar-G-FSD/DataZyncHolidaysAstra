@@ -9,7 +9,12 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="space-y-6">
             <Link to="/">
-              <img src="https://i.postimg.cc/Jnrg4Jqr/gootoholidays-yellow.png" alt="GooToHolidays Logo" className="h-12 w-auto object-contain" />
+              <img 
+                src="https://i.postimg.cc/Jnrg4Jqr/gootoholidays-yellow.png" 
+                alt="GooToHolidays Logo" 
+                className="h-12 w-auto object-contain" 
+                style={{ filter: 'invert(1) hue-rotate(180deg) brightness(1.2)' }}
+              />
             </Link>
             <p className="text-on-surface-variant font-sans leading-relaxed max-w-xs">
               Elevating global travel to an art form for the discerning few. Redefining luxury for the modern connoisseur.
