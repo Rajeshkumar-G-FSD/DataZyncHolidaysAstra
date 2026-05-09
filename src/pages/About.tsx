@@ -17,15 +17,15 @@ export default function About() {
             animate={{ opacity: 1, x: 0 }}
             className="space-y-8"
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-white/5 border border-white/10 text-primary text-xs font-bold tracking-widest uppercase">
-              The Tourium Legacy
+            <span className="inline-block px-4 py-2 rounded-full bg-black/5 border border-black/10 text-primary text-xs font-bold tracking-widest uppercase">
+              The GooToHolidays Legacy
             </span>
             <h1 className="font-display text-5xl md:text-7xl text-on-surface leading-tight">
               Curating The <br />
               <span className="text-primary italic">Extraordinary</span>
             </h1>
             <p className="font-sans text-lg text-on-surface-variant leading-relaxed max-w-xl">
-              Since 2008, Tourium has been the invisible hand behind the world's most exclusive travel experiences. We don't just book trips; we architect memories for the discerning few who demand nothing less than perfection.
+              Since 2008, GooToHolidays has been the invisible hand behind the world's most exclusive travel experiences. We don't just book trips; we architect memories for the discerning few who demand nothing less than perfection.
             </p>
           </motion.div>
 
@@ -53,7 +53,7 @@ export default function About() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 border-y border-white/5 bg-surface-container-lowest/50 backdrop-blur-sm">
+      <section className="py-20 border-y border-black/5 bg-surface-container-lowest/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6 md:px-20">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, i) => (

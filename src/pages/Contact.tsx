@@ -32,7 +32,7 @@ export default function Contact() {
                 transition={{ delay: i * 0.1 }}
                 className="glass-panel p-6 rounded-2xl flex items-center gap-4 group cursor-pointer hover:border-primary/30 transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all duration-500">
+                <div className="w-12 h-12 rounded-full bg-black/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all duration-500">
                   {method.icon}
                 </div>
                 <div>
@@ -52,22 +52,22 @@ export default function Contact() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-sans">
               <div className="space-y-2 group">
                 <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant transition-colors group-focus-within:text-primary">First Name</label>
-                <input type="text" placeholder="John" className="w-full bg-transparent border-b border-white/20 py-2 focus:outline-none focus:border-primary transition-all" />
+                <input type="text" placeholder="John" className="w-full bg-transparent border-b border-black/10 py-2 focus:outline-none focus:border-primary transition-all" />
               </div>
               <div className="space-y-2 group">
                 <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant transition-colors group-focus-within:text-primary">Last Name</label>
-                <input type="text" placeholder="Doe" className="w-full bg-transparent border-b border-white/20 py-2 focus:outline-none focus:border-primary transition-all" />
+                <input type="text" placeholder="Doe" className="w-full bg-transparent border-b border-black/10 py-2 focus:outline-none focus:border-primary transition-all" />
               </div>
             </div>
             
             <div className="space-y-2 group font-sans">
               <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant transition-colors group-focus-within:text-primary">Email Address</label>
-              <input type="email" placeholder="john@example.com" className="w-full bg-transparent border-b border-white/20 py-2 focus:outline-none focus:border-primary transition-all" />
+              <input type="email" placeholder="john@example.com" className="w-full bg-transparent border-b border-black/10 py-2 focus:outline-none focus:border-primary transition-all" />
             </div>
 
             <div className="space-y-2 group font-sans">
               <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant transition-colors group-focus-within:text-primary">Inquiry Type</label>
-              <select className="w-full bg-transparent border-b border-white/20 py-2 focus:outline-none focus:border-primary transition-all text-on-surface appearance-none">
+              <select className="w-full bg-transparent border-b border-black/10 py-2 focus:outline-none focus:border-primary transition-all text-on-surface appearance-none">
                 <option className="bg-surface-dim">Bespoke Travel</option>
                 <option className="bg-surface-dim">Corporate Retreat</option>
                 <option className="bg-surface-dim">Private Villa</option>
@@ -76,7 +76,7 @@ export default function Contact() {
 
             <div className="space-y-2 group font-sans">
               <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant transition-colors group-focus-within:text-primary">Message</label>
-              <textarea placeholder="How can we assist you?" rows={3} className="w-full bg-transparent border-b border-white/20 py-2 focus:outline-none focus:border-primary transition-all resize-none" />
+              <textarea placeholder="How can we assist you?" rows={3} className="w-full bg-transparent border-b border-black/10 py-2 focus:outline-none focus:border-primary transition-all resize-none" />
             </div>
 
             <button type="button" className="w-full bg-primary-container text-on-primary-container py-5 rounded-xl font-bold tracking-widest text-xs uppercase flex items-center justify-center gap-3 hover:scale-[1.02] transition-all shadow-xl shadow-primary/10">

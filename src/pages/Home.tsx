@@ -71,7 +71,7 @@ export default function Home() {
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-linear-to-t from-surface-dim via-surface-dim/40 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-surface-dim/80 via-surface-dim/40 to-transparent" />
         </motion.div>
         
         <div className="relative z-10 text-center px-6 md:px-20 max-w-7xl mx-auto">
@@ -79,9 +79,9 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="font-display text-5xl md:text-8xl text-gradient mb-6 leading-tight"
+            className="font-display text-5xl md:text-8xl text-on-surface mb-6 leading-tight tracking-tighter"
           >
-            Explore the World <br /> in Luxury
+            Explore the World <br /> in <span className="text-primary italic">Luxury</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0 }}
@@ -161,46 +161,43 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-24 px-6 md:px-20 max-w-7xl mx-auto">
-        <motion.h2 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="font-display text-5xl text-center text-on-surface mb-16"
-        >
-          Bespoke Services
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {services.map((service, i) => (
-            <motion.div 
-              key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15, duration: 0.6 }}
-              className={`glass-panel p-10 rounded-2xl hover:scale-[1.02] transition-all duration-500 flex flex-col items-center text-center relative overflow-hidden ${service.featured ? 'border-primary/30' : ''}`}
-            >
-              {service.featured && (
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent z-0" 
-                />
-              )}
-              <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 relative z-10 ${service.featured ? 'bg-primary/20 shadow-xl shadow-primary/10' : 'bg-surface-container-high'}`}>
-                {service.icon}
-              </div>
-              <h3 className="font-display text-2xl text-on-surface mb-4 relative z-10">{service.title}</h3>
-              <p className="font-sans text-on-surface-variant leading-relaxed relative z-10">{service.description}</p>
-            </motion.div>
-          ))}
+      {/* Services Section - The "Main Red Section" mentioned by user */}
+      <section className="py-24 px-6 md:px-20 bg-primary relative overflow-hidden">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.h2 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="font-display text-5xl text-center text-white mb-16"
+          >
+            Bespoke Services
+          </motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {services.map((service, i) => (
+              <motion.div 
+                key={service.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15, duration: 0.6 }}
+                className="bg-white/10 backdrop-blur-md p-10 rounded-2xl hover:bg-white/15 transition-all duration-500 flex flex-col items-center text-center border border-white/10"
+              >
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6 bg-white text-primary shadow-xl">
+                  {service.icon}
+                </div>
+                <h3 className="font-display text-2xl text-white mb-4">{service.title}</h3>
+                <p className="font-sans text-white/80 leading-relaxed">{service.description}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-[120px] -mr-48 -mt-48" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-black/10 rounded-full blur-[120px] -ml-48 -mb-48" />
       </section>
 
 
       {/* Testimonials Section */}
-      <section className="py-24 px-6 md:px-20 bg-surface-container-lowest/50 border-y border-white/5 relative overflow-hidden">
+      <section className="py-24 px-6 md:px-20 bg-surface-container-lowest/50 border-y border-black/5 relative overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
@@ -210,8 +207,8 @@ export default function Home() {
             className="lg:w-1/3"
           >
             <span className="text-primary text-[10px] font-bold tracking-[0.3em] uppercase mb-4 block">CLIENT VOICES</span>
-            <h2 className="font-display text-4xl md:text-5xl text-on-surface mb-6">The Dossier of <br /> Excellence</h2>
-            <p className="text-on-surface-variant font-sans leading-relaxed">Hear from those who have traversed the globe with Tourium.</p>
+            <h2 className="font-display text-4xl md:text-5xl text-on-surface mb-6Tracking-tighter">The Dossier of <br /><span className="text-primary italic">Excellence</span></h2>
+            <p className="text-on-surface-variant font-sans leading-relaxed">Hear from those who have traversed the globe with GooToHolidays.</p>
           </motion.div>
           <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8">
             <motion.div 
@@ -243,7 +240,7 @@ export default function Home() {
               <div className="flex gap-1 text-primary">
                 {[1,2,3,4,5].map(i => <Diamond key={i} size={12} fill="currentColor" />)}
               </div>
-              <p className="text-on-surface font-sans italic leading-relaxed">"Discretion is paramount for my family. Tourium delivered a seamless, anonymous journey that felt both safe and incredibly grand."</p>
+              <p className="text-on-surface font-sans italic leading-relaxed">"Discretion is paramount for my family. GooToHolidays delivered a seamless, anonymous journey that felt both safe and incredibly grand."</p>
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-surface-container-high" />
                 <div>

@@ -46,7 +46,7 @@ export default function Booking() {
         <div className="glass-panel rounded-3xl p-10 md:p-16 shadow-2xl overflow-hidden relative min-h-[600px]">
           {/* Progress */}
           <div className="flex justify-between items-center mb-16 relative max-w-xl mx-auto">
-            <div className="absolute top-[20px] left-0 w-full h-px bg-white/10" />
+            <div className="absolute top-[20px] left-0 w-full h-px bg-black/5" />
             <motion.div 
               animate={{ width: `${(step - 1) * 50}%` }}
               className="absolute top-[20px] left-0 h-[2px] bg-primary transition-all duration-500" 
@@ -79,7 +79,7 @@ export default function Booking() {
                     <input 
                       type="text" 
                       placeholder="Search destinations..." 
-                      className="w-full bg-transparent border-b border-white/20 pb-3 pl-8 text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary transition-all"
+                      className="w-full bg-transparent border-b border-black/10 pb-3 pl-8 text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary transition-all"
                     />
                   </div>
                 </div>
@@ -88,19 +88,19 @@ export default function Booking() {
                   <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Experiences</h4>
                   <div className="flex flex-wrap gap-3">
                     {['Private Villas', 'Yacht Charters', 'Alpine Retreats'].map((tag, i) => (
-                      <button key={tag} className={`px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all ${i === 0 ? 'bg-secondary/20 text-secondary' : 'glass-panel text-on-surface hover:bg-white/5'}`}>{tag}</button>
+                      <button key={tag} className={`px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all ${i === 0 ? 'bg-primary/10 text-primary' : 'glass-panel text-on-surface hover:bg-black/5'}`}>{tag}</button>
                     ))}
                   </div>
                 </div>
 
-                <div className="space-y-6 pt-12 border-t border-white/5">
+                <div className="space-y-6 pt-12 border-t border-black/5">
                   <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Dates</h4>
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="glass-panel p-4 rounded-xl border-white/5">
+                    <div className="glass-panel p-4 rounded-xl border-black/5">
                       <span className="block text-[8px] font-bold uppercase text-on-surface-variant mb-1">Check-in</span>
                       <span className="block text-xs text-on-surface">Oct 15, 2024</span>
                     </div>
-                    <div className="glass-panel p-4 rounded-xl border-white/5">
+                    <div className="glass-panel p-4 rounded-xl border-black/5">
                       <span className="block text-[8px] font-bold uppercase text-on-surface-variant mb-1">Check-out</span>
                       <span className="block text-xs text-on-surface">Oct 22, 2024</span>
                     </div>
@@ -123,7 +123,7 @@ export default function Booking() {
                       </div>
                     )}
                     <div className="absolute bottom-6 left-6 right-6">
-                      <div className={`glass-panel p-5 rounded-2xl border-white/10 flex justify-between items-end backdrop-blur-3xl transition-all group-hover:border-primary/30 ${selectedId === opt.id ? 'border-primary/30 bg-primary/5' : ''}`}>
+                      <div className={`glass-panel p-5 rounded-2xl border-black/10 flex justify-between items-end backdrop-blur-3xl transition-all group-hover:border-primary/30 ${selectedId === opt.id ? 'border-primary/30 bg-primary/5' : ''}`}>
                         <div>
                           <span className="text-[8px] font-bold uppercase text-primary mb-1 block">AVAILABLE</span>
                           <h4 className="font-display text-xl text-on-surface">{opt.title}</h4>
@@ -148,7 +148,7 @@ export default function Booking() {
               className="max-w-4xl mx-auto space-y-12"
             >
               <div className="flex gap-12 items-start">
-                <div className="w-1/3 h-48 rounded-2xl overflow-hidden glass-panel border-white/10 shrink-0">
+                <div className="w-1/3 h-48 rounded-2xl overflow-hidden glass-panel border-black/10 shrink-0">
                   <img src={selectedDestination?.img} className="w-full h-full object-cover" alt="Selected" />
                 </div>
                 <div className="space-y-4">
@@ -173,15 +173,15 @@ export default function Booking() {
                   <div className="flex items-center justify-between glass-panel p-4 rounded-xl">
                     <span className="text-on-surface">Adults</span>
                     <div className="flex items-center gap-4">
-                      <button className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center">-</button>
+                      <button className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center">-</button>
                       <span>2</span>
-                      <button className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center">+</button>
+                      <button className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center">+</button>
                     </div>
                   </div>
                 </div>
                 <div className="space-y-6">
                   <h4 className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Special Requests</h4>
-                  <textarea className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-sm focus:border-primary outline-none h-24" placeholder="Dietary requirements, accessibility, etc." />
+                  <textarea className="w-full bg-black/5 border border-black/10 rounded-xl p-4 text-sm focus:border-primary outline-none h-24" placeholder="Dietary requirements, accessibility, etc." />
                 </div>
               </div>
             </motion.div>

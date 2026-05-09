@@ -29,14 +29,13 @@ export default function Navbar() {
   }, [pathname]);
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 border-b ${scrolled || isOpen ? 'bg-black/90 backdrop-blur-xl border-white/5 h-20' : 'bg-transparent border-transparent h-24'}`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 border-b ${scrolled || isOpen ? 'bg-surface-dim/95 backdrop-blur-xl border-black/5 h-20' : 'bg-transparent border-transparent h-24'}`}>
       <div className="flex justify-between items-center h-full px-6 md:px-20 max-w-7xl mx-auto w-full">
         <Link to="/" className="relative z-50">
           <img 
-            src="https://i.postimg.cc/Jnrg4Jqr/gootoholidays-yellow.png" 
+            src="https://i.postimg.cc/59TXKzkF/gootoholidays-yellow-removebg-preview.png" 
             alt="GooToHolidays Logo" 
             className="h-10 md:h-14 w-auto object-contain" 
-            style={{ filter: 'invert(1) hue-rotate(180deg) brightness(1.2)' }}
           />
         </Link>
         
@@ -77,7 +76,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 top-20 bg-black/95 backdrop-blur-3xl z-40 md:hidden flex flex-col p-8"
+            className="fixed inset-0 top-20 bg-surface-dim/98 backdrop-blur-3xl z-40 md:hidden flex flex-col p-8"
           >
             <div className="flex flex-col gap-5 pt-8 items-center justify-center h-full">
               {navLinks.map((link, i) => (

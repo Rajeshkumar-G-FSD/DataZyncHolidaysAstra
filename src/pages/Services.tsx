@@ -43,7 +43,7 @@ export default function Services() {
             transition={{ delay: i * 0.05 }}
             className="glass-panel p-10 rounded-2xl group hover:scale-[1.03] transition-all duration-500 relative overflow-hidden"
           >
-            <div className="w-14 h-14 rounded-full bg-white/5 border border-white/5 flex items-center justify-center mb-8 text-primary group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-500">
+            <div className="w-14 h-14 rounded-full bg-black/5 border border-black/5 flex items-center justify-center mb-8 text-primary group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-500">
               {card.icon}
             </div>
             <h3 className="font-display text-2xl text-on-surface mb-4">{card.title}</h3>
