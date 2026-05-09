@@ -68,18 +68,21 @@ export default function Visa() {
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img 
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhiz0ny9QAVtO5G8O1xJRwjnkVxPBjPxgLoBi-a9Y2-agk_K_rKEVLJwjEY45sHUMH3Suh8s05DPukC5yDvu-UKEzHdNHwaE1J8S15LSNfTec-u2JN6m6rz_dK02dFPbqnE0b_jZyjNpPXYtuywe2sQtaLC6ubuDmWDjZyPHd1AWeLDactknG6WucfKY2NwRBjJmiTchcixO01nm7vIQgBf3ld5yzo-FIWv-VY44-jRDgMa1Kf9PpJqBoYPQTW0kgb-U_gVXycFG9Y" 
-            className="w-full h-full object-cover fixed" 
+            className="w-full h-full object-cover fixed opacity-40 grayscale-[0.5]" 
             alt="Visas" 
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-linear-to-t from-surface-dim via-surface-dim/70 to-transparent" />
+          <div className="absolute inset-0 bg-[#FCF6F5]/80" />
         </div>
         <div className="relative z-10 w-full px-6">
           <div className="text-center max-w-4xl mx-auto mb-12">
             <span className="inline-block px-4 py-1.5 rounded-full glass-panel text-xs font-bold tracking-widest text-primary mb-6">GLOBAL ENTRY CONCIERGE</span>
             <h1 className="font-display text-5xl md:text-8xl text-on-surface mb-8 tracking-tighter">Effortless Borders. <br /><span className="text-primary italic">Boundless Travel.</span></h1>
           </div>
-          <VisaSearchBar />
+          <VisaSearchBar onApply={(data) => {
+            setSelectedDest({ name: data.country, flag: data.country.split(' ')[0] });
+            setIsModalOpen(true);
+          }} />
         </div>
       </header>
 
@@ -128,30 +131,26 @@ export default function Visa() {
         destination={selectedDest} 
       />
 
-      <section className="relative py-32 px-6 md:px-20 overflow-hidden">
+      <section className="relative py-32 px-6 md:px-20 overflow-hidden bg-[#990011]">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&q=80&w=2000" 
-            className="w-full h-full object-cover brightness-[0.3]" 
-            alt="background" 
-          />
+          <div className="absolute inset-0 bg-[#990011] opacity-90" />
         </div>
         
         <div className="relative z-10 max-w-6xl mx-auto">
-          <h2 className="font-display text-4xl md:text-5xl text-center text-white mb-20 tracking-tight">Our Elite <span className="text-primary italic">Process</span></h2>
+          <h2 className="font-display text-4xl md:text-5xl text-center text-white mb-28 tracking-tight">Our Elite <span className="text-white italic opacity-80 underline decoration-white/20 underline-offset-8">Protocol</span></h2>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 relative">
             {/* Connector Line (Desktop) */}
-            <div className="hidden md:block absolute top-[60px] left-[15%] right-[15%] h-px bg-white/10" />
+            <div className="hidden md:block absolute top-[64px] left-[12%] right-[12%] h-[2px] bg-white/20" />
             
             {protocol.map((step) => (
               <div key={step.id} className="relative z-10 flex flex-col items-center group">
-                <div className={`w-32 h-32 rounded-full flex items-center justify-center transition-all duration-500 mb-8 ${step.active ? 'bg-primary text-white shadow-2xl shadow-primary/40' : 'bg-white text-primary shadow-xl'}`}>
-                  <div className="scale-150">{step.icon}</div>
+                <div className={`w-32 h-32 rounded-full flex items-center justify-center transition-all duration-500 mb-10 border-4 ${step.active ? 'bg-black border-black text-white shadow-2xl shadow-black/40 scale-110' : 'bg-white border-white text-black shadow-xl'}`}>
+                  <div className="scale-125">{step.icon}</div>
                 </div>
-                <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-primary mb-3">PHASE {step.id}</span>
+                <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-white/50 mb-4">PHASE {step.id}</span>
                 <h4 className="font-display text-2xl text-white mb-3 text-center">{step.title}</h4>
-                <p className="text-white/60 text-sm text-center leading-relaxed max-w-[200px]">{step.desc}</p>
+                <p className="text-white/70 text-sm text-center leading-relaxed max-w-[220px] font-sans">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -159,14 +158,14 @@ export default function Visa() {
       </section>
 
       {/* Global Network Section */}
-      <section className="bg-white py-32 px-6 md:px-20 relative z-10">
+      <section className="bg-surface-dim py-32 px-6 md:px-20 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-20">
             <div className="max-w-2xl">
               <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-primary mb-4 block">Global Coverage</span>
-              <h2 className="font-display text-5xl md:text-6xl text-gray-900 leading-tight">Supported <br /><span className="text-primary italic">Nations</span></h2>
+              <h2 className="font-display text-5xl md:text-6xl text-on-surface leading-tight">Supported <br /><span className="text-primary italic">Nations</span></h2>
             </div>
-            <p className="text-gray-500 font-sans max-w-xs text-sm leading-relaxed mb-4">
+            <p className="text-on-surface-variant font-sans max-w-xs text-sm leading-relaxed mb-4">
               Providing bespoke visa solutions and diplomatic liaison services across major global territories with unprecedented accuracy.
             </p>
           </div>
@@ -179,10 +178,10 @@ export default function Visa() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: (i % 5) * 0.03 }}
-                className="bg-gray-50 border border-gray-100 p-4 rounded-2xl flex items-center gap-4 hover:border-primary/40 hover:bg-white hover:shadow-xl hover:shadow-black/5 transition-all duration-300 group cursor-default"
+                className="bg-surface-container-low border border-surface-container p-4 rounded-2xl flex items-center gap-4 hover:border-primary/40 hover:bg-surface-bright hover:shadow-xl hover:shadow-black/5 transition-all duration-300 group cursor-default"
               >
                 <span className="text-3xl group-hover:scale-110 transition-transform duration-300">{country.flag}</span>
-                <span className="text-[11px] font-bold tracking-wider text-gray-800 uppercase group-hover:text-primary transition-colors">{country.name}</span>
+                <span className="text-[11px] font-bold tracking-wider text-on-surface-variant uppercase group-hover:text-primary transition-colors">{country.name}</span>
               </motion.div>
             ))}
           </div>
@@ -190,7 +189,7 @@ export default function Visa() {
       </section>
 
       {/* Contact Section */}
-      <footer className="bg-gray-950 py-32 px-6 md:px-20 relative z-10 text-white">
+      <footer className="bg-[#000000] py-32 px-6 md:px-20 relative z-10 text-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20">
             <div className="max-w-md">

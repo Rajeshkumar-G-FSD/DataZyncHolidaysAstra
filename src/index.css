@@ -7,23 +7,23 @@
 
   --color-surface-dim: #FCF6F5;
   --color-surface-bright: #FFFFFF;
-  --color-surface-container-lowest: #F5F0EF;
-  --color-surface-container-low: #EFE9E8;
-  --color-surface-container: #E9E3E2;
-  --color-surface-container-high: #E3DDDC;
-  --color-surface-container-highest: #DDD7D6;
+  --color-surface-container-lowest: #FAF4F3;
+  --color-surface-container-low: #F5EFEB;
+  --color-surface-container: #F0EAE6;
+  --color-surface-container-high: #EBE5E1;
+  --color-surface-container-highest: #E6E0DD;
   
   --color-on-surface: #000000;
-  --color-on-surface-variant: #4A4A4A;
+  --color-on-surface-variant: #2A2A2A;
   
   --color-primary: #990011;
   --color-on-primary: #FFFFFF;
   --color-primary-container: #990011;
   --color-on-primary-container: #FFFFFF;
   
-  --color-secondary: #adc6ff;
-  --color-on-secondary: #002e6a;
-  --color-secondary-container: #0566d9;
+  --color-secondary: #2A2A2A;
+  --color-on-secondary: #FFFFFF;
+  --color-secondary-container: #1A1A1A;
   
   --radius-xl: 1.5rem;
 }

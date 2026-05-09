@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Search, Map as MapIcon, Palmtree, Calendar, Binoculars, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, Map as MapIcon, Palmtree, Calendar, Binoculars, X, ChevronLeft, ChevronRight, Plus } from 'lucide-react';
 
 const countries = [
   { name: 'Albania', flag: '🇦🇱' }, { name: 'Algeria', flag: '🇩🇿', category: 'Sticker' }, { name: 'Andorra', flag: '🇦🇩' },
@@ -43,7 +43,11 @@ const purposes = [
   { name: 'Family Visit', icon: '🏠' },
 ];
 
-export default function VisaSearchBar() {
+interface VisaSearchBarProps {
+  onApply?: (data: { country: string; purpose: string; dates: string }) => void;
+}
+
+export default function VisaSearchBar({ onApply }: VisaSearchBarProps) {
   const [activeTab, setActiveTab] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCountry, setSelectedCountry] = useState('');
@@ -419,36 +423,52 @@ export default function VisaSearchBar() {
           >
             <div className="bg-white rounded-[32px] shadow-2xl border border-gray-100 overflow-hidden">
               {/* Results Top Header Bar */}
-              <div className="bg-gray-50/50 border-b border-gray-100 px-8 py-4 flex flex-wrap items-center justify-between gap-4">
-                <div className="flex items-center gap-6">
-                  <div className="flex items-center gap-2 font-bold text-gray-800">
-                    <span className="text-xl">{selectedCountry.split(' ')[0] || '🌎'}</span>
-                    <span>{selectedCountry.split(' ').slice(1).join(' ') || 'Global'}</span>
+              <div className="bg-white border-b border-gray-100 px-4 md:px-8 py-6 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-sm">
+                <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
+                  <div className="flex items-center gap-3">
+                    <span className="text-3xl filter drop-shadow-sm">{selectedCountry.split(' ')[0] || '🌎'}</span>
+                    <span className="text-xl md:text-2xl font-black text-slate-800 tracking-tight">{selectedCountry.split(' ').slice(1).join(' ') || 'Algeria'}</span>
                   </div>
-                  <div className="w-px h-4 bg-gray-200" />
-                  <div className="flex items-center gap-2 font-bold text-gray-800 uppercase tracking-wide">
-                    <span>{selectedPurpose || 'Travel'}</span>
+                  <div className="hidden md:block w-px h-10 bg-gray-100" />
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 md:w-10 md:h-10 bg-orange-50 rounded-xl flex items-center justify-center text-lg md:text-xl">💼</div>
+                    <span className="text-lg md:text-xl font-bold text-slate-700 uppercase tracking-tight">
+                      {selectedPurpose.split(' ').slice(1).join(' ') || 'BUSINESS'}
+                    </span>
                   </div>
-                  <div className="w-px h-4 bg-gray-200" />
-                  <div className="flex items-center gap-2 font-bold text-gray-800">
-                    <span className="text-xl">📅</span>
-                    <span>{dateRange.start?.toLocaleDateString('en-GB') || '...'} — {dateRange.end?.toLocaleDateString('en-GB') || '...'}</span>
+                  <div className="hidden md:block w-px h-10 bg-gray-100" />
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 md:w-10 md:h-10 bg-primary/5 rounded-xl flex items-center justify-center text-lg md:text-xl">📅</div>
+                    <span className="text-lg md:text-xl font-bold text-slate-700">
+                      {dateRange.start?.toLocaleDateString('en-GB') || '08/06/2026'} — {dateRange.end?.toLocaleDateString('en-GB') || '10/06/2026'}
+                    </span>
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-2 text-xs font-medium text-gray-400 uppercase tracking-widest">
-                    <span>Show prices including taxes</span>
-                    <div className="w-8 h-4 bg-primary/20 rounded-full cursor-pointer relative">
-                      <div className="w-3 h-3 bg-primary rounded-full absolute right-0.5 top-0.5" />
+                
+                <div className="flex flex-col sm:flex-row items-center gap-6 md:gap-8 w-full lg:w-auto">
+                  <div className="flex items-center gap-4 group cursor-pointer">
+                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em] md:tracking-[0.2em] group-hover:text-primary transition-colors">Show prices including taxes</span>
+                    <div className="w-12 h-6 bg-primary/10 rounded-full relative p-1 transition-all">
+                      <div className="w-4 h-4 bg-primary rounded-full absolute right-1" />
                     </div>
                   </div>
-                  <button className="border border-gray-200 px-4 py-1.5 rounded-lg text-xs font-bold hover:bg-gray-50 flex items-center gap-2">
-                    <X size={12} className="rotate-45" />
-                    Share Info
-                  </button>
-                  <button className="bg-primary text-white px-6 py-1.5 rounded-lg text-xs font-bold shadow-lg shadow-primary/20 hover:brightness-110">
-                    Apply Visa
-                  </button>
+                  
+                  <div className="flex items-center gap-3 md:gap-4 w-full sm:w-auto">
+                    <button className="flex-1 sm:flex-none bg-white border border-slate-200 px-4 md:px-6 py-3 rounded-xl text-xs md:text-sm font-black text-slate-800 flex items-center justify-center gap-2 md:gap-3 hover:bg-slate-50 transition-all shadow-sm">
+                      <Plus size={16} className="text-slate-400" />
+                      Share Info
+                    </button>
+                    <button 
+                      onClick={() => onApply?.({
+                        country: selectedCountry,
+                        purpose: selectedPurpose,
+                        dates: `${dateRange.start?.toLocaleDateString()} - ${dateRange.end?.toLocaleDateString()}`
+                      })}
+                      className="flex-1 sm:flex-none bg-primary text-white px-8 md:px-10 py-3 rounded-xl text-xs md:text-sm font-black tracking-wide shadow-xl shadow-primary/20 hover:brightness-110 transition-all active:scale-95"
+                    >
+                      Apply Visa
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -573,7 +593,7 @@ export default function VisaSearchBar() {
                       <div className="grid grid-cols-2 gap-4 mb-4">
                         <div>
                           <span className="block text-[8px] font-bold text-gray-400 uppercase tracking-tighter">Processing time:</span>
-                          <span className="text-[10px] font-bold text-blue-600 flex items-center gap-1">
+                          <span className="text-[10px] font-bold text-primary flex items-center gap-1">
                             {option.time} <Search size={8} />
                           </span>
                         </div>
