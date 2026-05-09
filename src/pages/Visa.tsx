@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowUpRight, ClipboardCheck, FileSignature, Mail, MapPin, Phone, RefreshCw, UserCheck } from 'lucide-react';
 import VisaSearchBar from '../components/VisaSearchBar';
-import VisaDetailsModal from '../components/VisaDetailsModal';
 
 const visaDestinations = [
   { name: 'Schengen Area', desc: 'Seamless entry across 27 nations.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC6Wese6sJs6k5mX6TAHYxbW6nlLJ9Qo1BPFVXh-hCWAdVUqaEeo0IPGbsRIPe_KosHn-hnRLNqCqRYQGmuQGeLpNRuCmWDJ8g2IP0I3R2EQxfZ1A46E2A3iP4UkDSHdxS8BPfqzF1HTBh3BWnL0sjv0BmLaEy9OfZ4Ywl_tc5xGSvth0gO7K0d5etH-7UrjUs3chyy2kFe4n9wML8jbbk64iq63gsY2BaLtN3MiGmV4go-wCBA_iCYlBt9wUrVEWE3oD9wNLdZ8Xqv', large: true, flag: '🇪🇺' },
@@ -53,12 +53,10 @@ const protocol = [
 ];
 
 export default function Visa() {
-  const [selectedDest, setSelectedDest] = useState<{ name: string; flag: string } | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleApply = (dest: { name: string; flag: string }) => {
-    setSelectedDest(dest);
-    setIsModalOpen(true);
+    navigate(`/visa-application?country=${encodeURIComponent(dest.name)}`);
   };
 
   return (
@@ -80,8 +78,7 @@ export default function Visa() {
             <h1 className="font-display text-5xl md:text-8xl text-on-surface mb-8 tracking-tighter">Effortless Borders. <br /><span className="text-primary italic">Boundless Travel.</span></h1>
           </div>
           <VisaSearchBar onApply={(data) => {
-            setSelectedDest({ name: data.country, flag: data.country.split(' ')[0] });
-            setIsModalOpen(true);
+            navigate(`/visa-application?country=${encodeURIComponent(data.country)}`);
           }} />
         </div>
       </header>
@@ -124,12 +121,6 @@ export default function Visa() {
           ))}
         </div>
       </section>
-
-      <VisaDetailsModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        destination={selectedDest} 
-      />
 
       <section className="relative py-32 px-6 md:px-20 overflow-hidden bg-[#990011]">
         <div className="absolute inset-0 z-0">

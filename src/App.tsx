@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
 import Visa from './pages/Visa';
+import VisaApplication from './pages/VisaApplication';
 import Booking from './pages/Booking';
 import Contact from './pages/Contact';
 
@@ -33,6 +34,11 @@ function AnimatedRoutes() {
         <Route path="/visa" element={
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.5 }}>
             <Visa />
+          </motion.div>
+        } />
+        <Route path="/visa-application" element={
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
+            <VisaApplication />
           </motion.div>
         } />
         <Route path="/booking" element={
