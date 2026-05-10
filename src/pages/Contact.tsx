@@ -2,10 +2,12 @@ import { motion } from 'motion/react';
 import { Phone, Mail, MessageSquare, MapPin, Send, Globe } from 'lucide-react';
 
 const contactMethods = [
-  { icon: <Phone size={20} />, label: 'Phone', value: '+1 (800) 123-4567' },
-  { icon: <Mail size={20} />, label: 'Email', value: 'concierge@tourium.com' },
-  { icon: <MessageSquare size={20} />, label: 'WhatsApp', value: 'Message Us' },
-  { icon: <MapPin size={20} />, label: 'Headquarters', value: 'Geneva, Switzerland' },
+  { icon: <Phone size={20} />, label: 'Priority Hotline', value: '+91 984045 4061' },
+  { icon: <Mail size={20} />, label: 'Email Inquiries', value: 'gotoholidaysandvisa@gmail.com' },
+  { icon: <Mail size={20} />, label: 'Support Email', value: 'info@gotoholidays-visa.co.in' },
+  { icon: <MessageSquare size={20} />, label: 'WhatsApp', value: 'Chat with Us' },
+  { icon: <MapPin size={20} />, label: 'Headquarters', value: 'Chennai, India' },
+  { icon: <Globe size={20} />, label: 'Availability', value: '24/7 Concierge' },
 ];
 
 export default function Contact() {
@@ -103,7 +105,7 @@ export default function Contact() {
             <div className="flex justify-between items-start">
               <div className="space-y-4">
                 <h3 className="font-display text-4xl text-on-surface">Global Presence</h3>
-                <p className="text-on-surface-variant font-sans leading-relaxed max-w-sm">Curating extraordinary experiences from our hubs in Geneva, Dubai, and New York.</p>
+                <p className="text-on-surface-variant font-sans leading-relaxed max-w-sm">Operating from our headquarters in Chennai, providing elite visa and travel services worldwide.</p>
               </div>
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary shadow-2xl shadow-primary/20">
                 <Globe size={28} />

@@ -206,9 +206,14 @@ export default function Visa() {
                 </div>
                 <div>
                   <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-white/30 mb-2">Email Inquiries</h4>
-                  <a href="mailto:gotoholidaysandvisa@gmail.com" className="text-xl font-medium hover:text-primary transition-colors">
-                    gotoholidaysandvisa@gmail.com
-                  </a>
+                  <div className="flex flex-col gap-2">
+                    <a href="mailto:gotoholidaysandvisa@gmail.com" className="text-xl font-medium hover:text-primary transition-colors">
+                      gotoholidaysandvisa@gmail.com
+                    </a>
+                    <a href="mailto:info@gotoholidays-visa.co.in" className="text-xl font-medium hover:text-primary transition-colors">
+                      info@gotoholidays-visa.co.in
+                    </a>
+                  </div>
                 </div>
               </div>
               

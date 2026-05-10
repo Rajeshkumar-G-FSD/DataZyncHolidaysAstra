@@ -36,6 +36,9 @@ export default function Footer() {
                   <a href="mailto:gotoholidaysandvisa@gmail.com" className="text-on-surface-variant hover:text-primary transition-colors">
                     gotoholidaysandvisa@gmail.com
                   </a>
+                  <a href="mailto:info@gotoholidays-visa.co.in" className="text-on-surface-variant hover:text-primary transition-colors mt-1">
+                    info@gotoholidays-visa.co.in
+                  </a>
                 </div>
               </div>
               <div className="flex items-start gap-3 group">
