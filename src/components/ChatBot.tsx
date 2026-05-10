@@ -4,7 +4,8 @@ import { MessageSquare, X, Send, Bot, User, Sparkles, Search } from 'lucide-reac
 import { GoogleGenAI } from "@google/genai";
 
 // Initialize Gemini API
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const apiKey = process.env.GEMINI_API_KEY;
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 interface Message {
   role: 'user' | 'bot';
@@ -181,6 +182,10 @@ Please assist me with further process.`;
     setIsTyping(true);
 
     try {
+      if (!ai) {
+        throw new Error("Gemini API key is not configured.");
+      }
+
       const response = await ai.models.generateContent({
         model: "gemini-3-flash-preview",
         contents: [
@@ -204,7 +209,9 @@ Please assist me with further process.`;
       console.error("Chat error:", error);
       const errorMessage: Message = {
         role: 'bot',
-        text: "I'm sorry, I encountered an error. Our travel experts are available on WhatsApp if you need immediate assistance.",
+        text: error instanceof Error && error.message.includes("API key") 
+          ? "The AI advisor is currently offline. Please contact our experts on WhatsApp for assistance." 
+          : "I'm sorry, I encountered an error. Our travel experts are available on WhatsApp if you need immediate assistance.",
         timestamp: new Date()
       };
       setMessages(prev => [...prev, errorMessage]);
