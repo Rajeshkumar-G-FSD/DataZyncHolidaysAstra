@@ -5,16 +5,16 @@ import { ArrowUpRight, ClipboardCheck, FileSignature, Mail, MapPin, Phone, Refre
 import VisaSearchBar from '../components/VisaSearchBar';
 
 const visaDestinations = [
-  { name: 'Schengen Area', desc: 'Seamless entry across 27 nations.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC6Wese6sJs6k5mX6TAHYxbW6nlLJ9Qo1BPFVXh-hCWAdVUqaEeo0IPGbsRIPe_KosHn-hnRLNqCqRYQGmuQGeLpNRuCmWDJ8g2IP0I3R2EQxfZ1A46E2A3iP4UkDSHdxS8BPfqzF1HTBh3BWnL0sjv0BmLaEy9OfZ4Ywl_tc5xGSvth0gO7K0d5etH-7UrjUs3chyy2kFe4n9wML8jbbk64iq63gsY2BaLtN3MiGmV4go-wCBA_iCYlBt9wUrVEWE3oD9wNLdZ8Xqv', large: true, flag: '🇪🇺' },
-  { name: 'USA', desc: 'Premium Processing.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDy3_B9p7XuRf7uVGLBGmQ4sYWtm4BTnYUBe4VYSJafVexMMDcmiRa9SuqlSCJsREEg5DpsDvBdoGUA7aXwoQit1QzsE55YVWluu_Drv1iGaWuaR8Q7O448hAsTajx1hZzXjd6mRniEMn6A42jQEjQRkNgzfEJbwSeM7YeiJw56ooHqPxalHZJBUrfI1fIJfki0s4fZzeWuDSN0uxXv868_nu5JexSbs5ZRUwM-rUkLaUDs9uYC1LadpnW_PSQuVPYrQY-Pg7iKPtRk', flag: '🇺🇸' },
-  { name: 'UAE', desc: 'Golden Visa Experts.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC_45BlzvysNRUz62jfl0Emr59t-O7C-bDxwjleQ0DWXBGyb5kaaowo0KhuEINzlqonqd7Y--L7M74urldLVlpeRCrIZOBeM8cg9aIkbUY1-8XrvkpVykSjkiqN9oZYvmXA3iTWsD2rVDijh3xANfCHj9a19RdKeZhveCUWI1nIvVhOlrNn6Ghf4TSpZ1IMmTx5bsKRIACSpA7XTfY7H4sWLxFsyLm_9ic5cB5h1X_P8J5N6l7VhZmtGTKFQ0HNaw4OZdEv5NclDPcL', flag: '🇦🇪' },
-  { name: 'UK', desc: 'Investor Visa Specialists.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDC_GYCTt0PVEdFqLmqvb_clVc2O0Qkc-srjaVCYBWR7qhy4CDrbJk4wKWSroC8YAxveakp1KDRS2GJYewEuGA35Pfk1RiJpso_pMFhId0obnne9ZXLJUH8CNDgMj07SXVfoZIHc1J8P_HpRCPKpgyjcAFNKjNsj9JtAXtffDlZHR9EliruFz092umEQ5SuSHNIMKOY4vAb4thgWdmlabnke3XPrjHKV-T5DOpPdYbOh5f_NGjKZPKGfhelc_IGjSlEp2r9jo0TQjft', flag: '🇬🇧' },
+  { name: 'Schengen Area', slug: 'schengen', desc: 'Seamless entry across 27 nations.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC6Wese6sJs6k5mX6TAHYxbW6nlLJ9Qo1BPFVXh-hCWAdVUqaEeo0IPGbsRIPe_KosHn-hnRLNqCqRYQGmuQGeLpNRuCmWDJ8g2IP0I3R2EQxfZ1A46E2A3iP4UkDSHdxS8BPfqzF1HTBh3BWnL0sjv0BmLaEy9OfZ4Ywl_tc5xGSvth0gO7K0d5etH-7UrjUs3chyy2kFe4n9wML8jbbk64iq63gsY2BaLtN3MiGmV4go-wCBA_iCYlBt9wUrVEWE3oD9wNLdZ8Xqv', large: true, flag: '🇪🇺' },
+  { name: 'USA', slug: 'usa', desc: 'Premium Processing.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDy3_B9p7XuRf7uVGLBGmQ4sYWtm4BTnYUBe4VYSJafVexMMDcmiRa9SuqlSCJsREEg5DpsDvBdoGUA7aXwoQit1QzsE55YVWluu_Drv1iGaWuaR8Q7O448hAsTajx1hZzXjd6mRniEMn6A42jQEjQRkNgzfEJbwSeM7YeiJw56ooHqPxalHZJBUrfI1fIJfki0s4fZzeWuDSN0uxXv868_nu5JexSbs5ZRUwM-rUkLaUDs9uYC1LadpnW_PSQuVPYrQY-Pg7iKPtRk', flag: '🇺🇸' },
+  { name: 'Singapore', slug: 'singapore', desc: 'E-Visa Experts.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC_45BlzvysNRUz62jfl0Emr59t-O7C-bDxwjleQ0DWXBGyb5kaaowo0KhuEINzlqonqd7Y--L7M74urldLVlpeRCrIZOBeM8cg9aIkbUY1-8XrvkpVykSjkiqN9oZYvmXA3iTWsD2rVDijh3xANfCHj9a19RdKeZhveCUWI1nIvVhOlrNn6Ghf4TSpZ1IMmTx5bsKRIACSpA7XTfY7H4sWLxFsyLm_9ic5cB5h1X_P8J5N6l7VhZmtGTKFQ0HNaw4OZdEv5NclDPcL', flag: '🇸🇬' },
+  { name: 'UK', slug: 'uk', desc: 'Visitor Visa Specialists.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDC_GYCTt0PVEdFqLmqvb_clVc2O0Qkc-srjaVCYBWR7qhy4CDrbJk4wKWSroC8YAxveakp1KDRS2GJYewEuGA35Pfk1RiJpso_pMFhId0obnne9ZXLJUH8CNDgMj07SXVfoZIHc1J8P_HpRCPKpgyjcAFNKjNsj9JtAXtffDlZHR9EliruFz092umEQ5SuSHNIMKOY4vAb4thgWdmlabnke3XPrjHKV-T5DOpPdYbOh5f_NGjKZPKGfhelc_IGjSlEp2r9jo0TQjft', flag: '🇬🇧' },
 ];
 
 const supportedCountries = [
   { name: 'Albania', flag: '🇦🇱' }, { name: 'Algeria', flag: '🇩🇿' }, { name: 'Andorra', flag: '🇦🇩' },
   { name: 'Angola', flag: '🇦🇴' }, { name: 'Argentina', flag: '🇦🇷' }, { name: 'Armenia', flag: '🇦🇲' },
-  { name: 'Australia', flag: '🇦🇺' }, { name: 'Austria', flag: '🇦🇹' }, { name: 'Azerbaijan', flag: '🇦🇿' },
+  { name: 'Australia', flag: '🇦🇺', slug: 'australia' }, { name: 'Austria', flag: '🇦🇹' }, { name: 'Azerbaijan', flag: '🇦🇿' },
   { name: 'Bahamas', flag: '🇧🇸' }, { name: 'Bahrain', flag: '🇧🇭' }, { name: 'Bangladesh', flag: '🇧🇩' },
   { name: 'Belgium', flag: '🇧🇪' }, { name: 'Belize', flag: '🇧🇿' }, { name: 'Benin', flag: '🇧🇯' },
   { name: 'Bhutan', flag: '🇧🇹' }, { name: 'Bolivia', flag: '🇧🇴' }, { name: 'Botswana', flag: '🇧🇼' },
@@ -37,27 +37,32 @@ const supportedCountries = [
   { name: 'Pakistan', flag: '🇵🇰' }, { name: 'Panama', flag: '🇵🇦' }, { name: 'Peru', flag: '🇵🇪' },
   { name: 'Philippines', flag: '🇵🇭' }, { name: 'Poland', flag: '🇵🇱' }, { name: 'Portugal', flag: '🇵🇹' },
   { name: 'Qatar', flag: '🇶🇦' }, { name: 'Romania', flag: '🇷🇴' }, { name: 'Russia', flag: '🇷🇺' },
-  { name: 'Saudi Arabia', flag: '🇸🇦' }, { name: 'Singapore', flag: '🇸🇬' }, { name: 'Slovakia', flag: '🇸🇰' },
+  { name: 'Saudi Arabia', flag: '🇸🇦' }, { name: 'Singapore', flag: '🇸🇬', slug: 'singapore' }, { name: 'Slovakia', flag: '🇸🇰' },
   { name: 'Slovenia', flag: '🇸🇮' }, { name: 'South Africa', flag: '🇿🇦' }, { name: 'South Korea', flag: '🇰🇷' },
   { name: 'Spain', flag: '🇪🇸' }, { name: 'Sri Lanka', flag: '🇱🇰' }, { name: 'Sweden', flag: '🇸🇪' },
   { name: 'Switzerland', flag: '🇨🇭' }, { name: 'Thailand', flag: '🇹🇭' }, { name: 'Turkey', flag: '🇹🇷' },
-  { name: 'Ukraine', flag: '🇺🇦' }, { name: 'United Kingdom', flag: '🇬🇧' }, { name: 'United States', flag: '🇺🇸' },
+  { name: 'Ukraine', flag: '🇺🇦' }, { name: 'United Kingdom', flag: '🇬🇧', slug: 'uk' }, { name: 'United States', flag: '🇺🇸', slug: 'usa' },
   { name: 'Uruguay', flag: '🇺🇾' }, { name: 'Uzbekistan', flag: '🇺🇿' }, { name: 'Vietnam', flag: '🇻🇳' },
 ];
 
 const protocol = [
-  { id: '01', title: 'Document Audit', desc: 'Rigorous review by legal specialists.', icon: <ClipboardCheck /> },
+  { id: '01', title: 'Document Audit', desc: 'Rigorous review by specialists.', icon: <ClipboardCheck /> },
   { id: '02', title: 'Application', desc: 'Dedicated concierge drafting.', icon: <FileSignature /> },
   { id: '03', title: 'Processing', desc: 'Active diplomatic engagement.', icon: <RefreshCw /> },
-  { id: '04', title: 'Approval', desc: 'Insured credential delivery.', icon: <UserCheck />, active: true },
+  { id: '04', title: 'Approval', desc: 'Confirmed credential delivery.', icon: <UserCheck />, active: true },
 ];
 
 export default function Visa() {
   const navigate = useNavigate();
 
-  const handleApply = (dest: { name: string; flag: string }) => {
-    navigate(`/visa-application?country=${encodeURIComponent(dest.name)}`);
+  const handleApply = (dest: { name: string; flag: string; slug?: string }) => {
+    if (dest.slug) {
+      navigate(`/visa/${dest.slug}`);
+    } else {
+      navigate(`/visa-application?country=${encodeURIComponent(dest.name)}`);
+    }
   };
+
 
   return (
     <div className="w-full">

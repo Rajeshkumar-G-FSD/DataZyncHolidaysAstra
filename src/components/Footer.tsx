@@ -48,23 +48,40 @@ export default function Footer() {
                   <a href="tel:9840454061" className="text-on-surface-variant hover:text-primary transition-colors">
                     +91 984045 4061
                   </a>
+                  <a href="tel:8939423442" className="text-on-surface-variant hover:text-primary transition-colors mt-1">
+                    +91 89394 23442
+                  </a>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Address Details */}
-          <div className="space-y-6">
-            <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.2em]">Headquarters</h4>
-            <div className="flex items-start gap-3 text-sm text-on-surface-variant leading-relaxed">
-              <MapPin size={16} className="text-primary mt-0.5 shrink-0" />
-              <address className="not-italic">
-                No:2/305<br />
-                Puzgalanthi salai ki<br />
-                J.J nagar east<br />
-                Mugappair east<br />
-                Chennai 600037
-              </address>
+          <div className="space-y-6 lg:col-span-1">
+            <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.2em]">Offices</h4>
+            <div className="space-y-6">
+              <div className="flex items-start gap-3 text-sm text-on-surface-variant leading-relaxed">
+                <MapPin size={16} className="text-primary mt-0.5 shrink-0" />
+                <div>
+                  <span className="text-[10px] font-black uppercase text-gray-400 mb-1 block">Chennai HQ</span>
+                  <address className="not-italic">
+                    No:2/305, Puzgalanthi salai ki,<br />
+                    J.J nagar east, Mugappair east,<br />
+                    Chennai 600037
+                  </address>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 text-sm text-on-surface-variant leading-relaxed">
+                <MapPin size={16} className="text-primary mt-0.5 shrink-0" />
+                <div>
+                  <span className="text-[10px] font-black uppercase text-gray-400 mb-1 block">Nagercoil Office</span>
+                  <address className="not-italic">
+                    NO 23-80A EAST STREET KAKAMOOR,<br />
+                    SUCHINDRUM, KANYAKUMARI,<br />
+                    TN 629704
+                  </address>
+                </div>
+              </div>
             </div>
           </div>
 

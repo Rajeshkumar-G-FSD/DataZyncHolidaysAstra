@@ -47,7 +47,9 @@ export default function Navbar() {
               className={`font-sans font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:scale-105 ${
                 pathname === link.path 
                   ? 'text-primary border-b-2 border-primary pb-1' 
-                  : 'text-on-surface-variant hover:text-on-surface'
+                  : scrolled 
+                    ? 'text-on-surface-variant hover:text-on-surface' 
+                    : 'text-white/80 hover:text-white'
               }`}
             >
               {link.name}
@@ -56,12 +58,12 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-4 relative z-50">
-          <Link to="/contact" className="hidden md:block bg-primary-container text-on-primary-container px-6 py-2.5 rounded-lg font-sans font-bold text-sm tracking-widest uppercase hover:scale-105 transition-transform">
+          <Link to="/contact" className="hidden md:block bg-[#990011] text-white px-8 py-3 rounded-lg font-sans font-black text-xs tracking-widest uppercase hover:scale-105 transition-transform shadow-lg shadow-red-900/10">
             Inquire
           </Link>
           <button 
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-primary p-2 hover:bg-white/5 rounded-full transition-colors"
+            className={`md:hidden p-2 rounded-full transition-colors ${scrolled || isOpen ? 'text-primary hover:bg-black/5' : 'text-white hover:bg-white/10'}`}
           >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
