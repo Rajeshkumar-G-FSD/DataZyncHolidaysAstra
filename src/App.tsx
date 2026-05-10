@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+import ChatBot from './components/ChatBot';
 import MobileCTA from './components/MobileCTA';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -78,6 +79,7 @@ export default function App() {
         <main className="flex-grow">
           <AnimatedRoutes />
         </main>
+        <ChatBot />
         <WhatsAppButton />
         <MobileCTA />
         <Footer />

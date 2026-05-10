@@ -3,8 +3,8 @@ import { Phone, MessageCircle, Info } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export default function MobileCTA() {
-  const whatsappNumber = "8939423442";
-  const phoneNumber = "8939423442";
+  const whatsappNumber = "919840454061";
+  const phoneNumber = "919840454061";
 
   return (
     <div className="md:hidden fixed bottom-0 left-0 w-full h-18 bg-white border-t border-gray-100 grid grid-cols-3 z-50 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">

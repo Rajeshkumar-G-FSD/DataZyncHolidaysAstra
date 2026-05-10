@@ -45,11 +45,11 @@ export default function Footer() {
                 <Phone size={16} className="text-primary mt-0.5" />
                 <div className="flex flex-col">
                   <span className="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Priority Hotline</span>
-                  <a href="tel:9840454061" className="text-on-surface-variant hover:text-primary transition-colors">
+                  <a href="tel:919840454061" className="text-on-surface-variant hover:text-primary transition-colors">
                     +91 984045 4061
                   </a>
-                  <a href="tel:8939423442" className="text-on-surface-variant hover:text-primary transition-colors mt-1">
-                    +91 89394 23442
+                  <a href="https://wa.me/919840454061" target="_blank" rel="noopener noreferrer" className="text-[#25D366] hover:brightness-90 transition-all font-bold text-xs mt-1 flex items-center gap-1">
+                    WhatsApp: +91 984045 4061
                   </a>
                 </div>
               </div>
